@@ -1,5 +1,4 @@
 while True:
-	
 	x = int(input("Enter decimal value: "))
 	choice = input("Enter Choice(bin/oct/hex): ")
 		
