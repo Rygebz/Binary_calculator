@@ -1,51 +1,20 @@
 op = 1
 chr(op)
 
-while(op != 'e'):
-	choice = input("Enter Choice(bin/oct/hex): ")
-	x = int(input("Enter decimal value: "))
-		
-	if choice == 'bin':
-		print("Binary value is: \n", bin(x))
-		print("Are u want to continue, y or n?")
-		choice = input("Enter opertation: ")
-		while True:
-			if choice == 'y': 
-				x = int(input("Enter decimal value: "))
-				print("Binary value is: \n", bin(x))	
-				print("Are u want to continue, y or n?")
-				choice = input("Enter opertation: ")
-			break	
-		if choice == 'n':
-			print(" Enter Choice(bin/oct/hex)")
-			choice = input("Enter operation: ")
-	elif choice == 'oct':
-		print("Octal value is: \n", oct(x))
-		print("Are u want to continue, y or n?")
-		choice = input("Enter opertation: ")
-		while True:
-			if choice == 'y':
-				x = int(input("Enter decimal value: "))
-				print("Octal value is: \n", oct(x))
-				print("Are u want to continue, y or n ?")
-				choice = input("Enter opertation: ")
-			break	
-		if choice == 'n':
-			print(" Enter Choice(bin/oct/hex)")
-			choice = input("Enter operation: ")
-	elif choice == 'hex':
-		print("Hexadecimal value is: \n", hex(x))
-		print("Are u want to continue, y or n?")
-		choice = input("Enter opertation: ")
-		while True:
-			if choice == 'y': 
-				x = int(input("Enter decimal value: "))
-				print("Hexadecimal value is: \n", hex(x))
-				print("Are u want to continue, Y or N ?")
-				choice = input("Enter opertation: ")
-			break	
-		if choice == 'n':
-			print(" Enter Choice(bin/oct/hex)")
-			choice = input("Enter operation: ")
-	else:
-		print("Invalid operation")
+def convert_and_prompt(base, x):
+    print(f"{base.capitalize()} value is:")
+    print(eval(f"{base}(x)"))
+
+options = {
+    'bin': lambda x: convert_and_prompt('bin', x),
+    'oct': lambda x: convert_and_prompt('oct', x),
+    'hex': lambda x: convert_and_prompt('hex', x)
+}
+
+while True:
+    choice = input("Enter Choice (bin/oct/hex): ")
+    if choice in options:
+        x = int(input("Enter decimal value: "))
+        options[choice](x)
+    else:
+        print("Invalid choice. Please choose bin, oct, or hex.")
