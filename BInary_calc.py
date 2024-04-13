@@ -1,14 +1,11 @@
-op = 1
-chr(op)
-
-def convert_and_prompt(base, x):
+def convert(base, x):
     print(f"{base.capitalize()} value is:")
     print(eval(f"{base}(x)"))
 
 options = {
-    'bin': lambda x: convert_and_prompt('bin', x),
-    'oct': lambda x: convert_and_prompt('oct', x),
-    'hex': lambda x: convert_and_prompt('hex', x)
+    'bin': lambda x: convert('bin', x),
+    'oct': lambda x: convert('oct', x),
+    'hex': lambda x: convert('hex', x)
 }
 
 while True:
